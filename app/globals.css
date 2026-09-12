@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pastel-pink: #FFD1DC;
+  --color-pastel-blue: #AEC6CF;
+  --color-pastel-yellow: #FDFD96;
+  --color-pastel-purple: #C3B1E1;
+  --color-pastel-green: #77DD77;
+  --color-pastel-background: #FFF5F5;
+}
+
+body {
+  background-color: var(--color-pastel-background);
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.draw-animation {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 4s ease-in-out forwards;
+}
+
+.delay-1 { animation-delay: 1s; }
+.delay-2 { animation-delay: 2s; }
+.delay-3 { animation-delay: 3s; }
+.delay-4 { animation-delay: 4s; }
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flower-pop-in {
+  0% { transform: scale(0) rotate(var(--rot-start)); opacity: 0; }
+  100% { transform: scale(var(--scale)) rotate(var(--rot-end)); opacity: 1; }
+}
+
+@keyframes flower-pop-out {
+  0% { transform: scale(var(--scale)) rotate(var(--rot-end)); opacity: 1; }
+  100% { transform: scale(0) rotate(var(--rot-start)); opacity: 0; }
+}
+
+.animate-flower-in {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  animation: flower-pop-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--delay-in);
+}
+
+.animate-flower-out {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  animation: flower-pop-out 0.5s cubic-bezier(0.36, 0, 0.66, -0.56) both;
+  animation-delay: var(--delay-out);
+}
+
+@keyframes bounce-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(25%); }
+}
+
+.animate-bounce-x {
+  animation: bounce-x 1s infinite;
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -40px) rotate(10deg); }
+  66% { transform: translate(-20px, 30px) rotate(-10deg); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(-40px, -20px) rotate(-15deg); }
+  66% { transform: translate(30px, 20px) rotate(15deg); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(20px, 40px) rotate(5deg); }
+  66% { transform: translate(-30px, -20px) rotate(-5deg); }
+}
+
+.animate-float-1 {
+  animation: float-1 4s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-2 5s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-3 4.5s ease-in-out infinite;
+}
