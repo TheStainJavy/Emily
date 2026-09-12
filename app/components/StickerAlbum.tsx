@@ -5,12 +5,12 @@ import { Sparkles, Send, CheckCircle2 } from "lucide-react";
 import { saveMessage } from "../actions";
 
 const initialStickers = [
-  { id: 1, src: "/sticker1.webp", caught: false, position: "top-[10%] left-[10%]", animation: "animate-float-1" },
-  { id: 2, src: "/sticker2.webp", caught: false, position: "bottom-[20%] left-[30%]", animation: "animate-float-2" },
-  { id: 3, src: "/sticker3.webp", caught: false, position: "top-[20%] right-[15%]", animation: "animate-float-3" },
-  { id: 4, src: "/sticker4.webp", caught: false, position: "bottom-[15%] right-[25%]", animation: "animate-float-1" },
-  { id: 5, src: "/sticker5.webp", caught: false, position: "top-[40%] left-[40%]", animation: "animate-float-2" },
-  { id: 6, src: "/sticker6.webp", caught: false, position: "bottom-[40%] left-[15%]", animation: "animate-float-3" },
+  { id: 1, src: "/Sticker1.webp", caught: false, position: "top-[10%] left-[10%]", animation: "animate-float-1" },
+  { id: 2, src: "/Sticker2.webp", caught: false, position: "bottom-[20%] left-[30%]", animation: "animate-float-2" },
+  { id: 3, src: "/Sticker3.webp", caught: false, position: "top-[20%] right-[15%]", animation: "animate-float-3" },
+  { id: 4, src: "/Sticker4.webp", caught: false, position: "bottom-[15%] right-[25%]", animation: "animate-float-1" },
+  { id: 5, src: "/Sticker5.webp", caught: false, position: "top-[40%] left-[40%]", animation: "animate-float-2" },
+  { id: 6, src: "/Sticker6.webp", caught: false, position: "bottom-[40%] left-[15%]", animation: "animate-float-3" },
 ];
 
 const finalPositions = [
