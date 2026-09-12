@@ -7,7 +7,7 @@ import Script from "next/script";
 declare global {
   interface Window {
     SC: {
-      Widget: (element: HTMLIFrameElement | string) => {
+      Widget: ((element: HTMLIFrameElement | string) => {
         bind: (event: string, callback: () => void) => void;
         play: () => void;
         pause: () => void;
@@ -15,8 +15,7 @@ declare global {
         toggle: () => void;
         isPaused: (callback: (paused: boolean) => void) => void;
         getCurrentSound: (callback: (sound: { title: string }) => void) => void;
-      };
-      Widget: {
+      }) & {
         Events: {
           READY: string;
           PLAY: string;

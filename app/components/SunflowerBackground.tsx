@@ -56,7 +56,6 @@ export default function SunflowersBackground() {
           objectFit: "cover",
           objectPosition: "center center",
           userSelect: "none",
-          WebkitUserDrag: "none",
           willChange: "transform",
           transform: "translate3d(0, 0, 0) scale(1.015)",
           backfaceVisibility: "hidden",
