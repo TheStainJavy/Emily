@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Sparkles, Send, CheckCircle2 } from "lucide-react";
-import { saveMessage } from "../actions";
+import { saveMessage } from "../app/actions";
 
 const initialStickers = [
   { id: 1, src: "/Sticker1.webp", caught: false, position: "top-[10%] left-[10%]", animation: "animate-float-1" },
