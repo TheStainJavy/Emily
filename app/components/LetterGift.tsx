@@ -8,7 +8,7 @@ export default function LetterGift() {
 
   return (
     <div 
-      className="relative w-80 h-48 mx-auto cursor-pointer mt-8 mb-32 z-20" 
+      className="relative w-80 h-48 mx-auto cursor-pointer mt-28 mb-8 z-20" 
       onClick={() => setIsOpen(true)}
     >
       {/* Parte trasera del sobre */}
