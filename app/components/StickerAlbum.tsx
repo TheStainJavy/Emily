@@ -43,13 +43,15 @@ export default function StickerAlbum() {
     if (!comment.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
+    
     const result = await saveMessage(comment);
+    
     setIsSubmitting(false);
 
     if (result.success) {
       setStage('success');
     } else {
-      alert("No se pudo enviar el mensaje. Inténtalo de nuevo.");
+      alert("Hubo un error al guardar el mensaje. Inténtalo de nuevo.");
     }
   };
 
