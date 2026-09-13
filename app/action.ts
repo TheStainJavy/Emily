@@ -15,21 +15,21 @@ export async function saveMessage(message: string) {
       throw new Error(dbError.message);
     }
 
-    if (process.env.RESEND_API_KEY) {
+    if (process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL) {
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         const { error: emailError } = await resend.emails.send({
-          from: "onboarding@resend.dev",
+          from: `Emily Web <${process.env.RESEND_FROM_EMAIL}>`,
           to: ["javieralessport210@gmail.com"],
           subject: "✨ Nuevo mensaje desde la web",
           text: message,
         });
 
         if (emailError) {
-          console.error("Error enviando email:", emailError);
+          console.error(emailError);
         }
       } catch (emailException) {
-        console.error("Excepción en Resend:", emailException);
+        console.error(emailException);
       }
     }
 
