@@ -40,7 +40,7 @@ export default function StickerAlbum() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!comment.trim()) return;
+    if (!comment.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
     const result = await saveMessage(comment);
@@ -48,6 +48,8 @@ export default function StickerAlbum() {
 
     if (result.success) {
       setStage('success');
+    } else {
+      alert("No se pudo enviar el mensaje. Inténtalo de nuevo.");
     }
   };
 
@@ -104,9 +106,7 @@ export default function StickerAlbum() {
               <p>Has sido la persona que he conocido a lo largo del tiempo que ha sido la única que me hace sentir que realmente puedo ser yo mismo estando junto a ti.</p>
               <p>Eso te hace única y especial, te mereces todo lo lindo y bonito de esta vida y me gusta formar parte de tu proceso aunque sea en pequeña parte soy feliz.</p>
               <p>Aprecio todos mis recuerdos que tengo contigo y todo lo que siento por ti es lo que representan las flores amarillas este dia de mi para ti.</p>
-               <p>Aprecio todos mis recuerdos que tengo contigo y todo lo que siento por ti es lo que representan las flores amarillas este dia de mi para ti.</p> 
-               
-               <p> con mucho amor y cariño "Javy" </p>
+              <p>con mucho amor y cariño &quot;Javy&quot;</p>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ export default function StickerAlbum() {
             disabled={isSubmitting || !comment.trim()}
             className="flex items-center justify-center gap-2 w-full py-4 bg-pastel-green text-gray-900 rounded-xl shadow-md font-bold text-lg transition-all duration-300 hover:bg-[#679c76] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Guardando..." : "Enviar mensaje"}
+            {isSubmitting ? "Enviando..." : "Enviar mensaje"}
             <Send size={20} />
           </button>
         </form>
