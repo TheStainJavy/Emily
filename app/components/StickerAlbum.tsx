@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Sparkles, Send, CheckCircle2 } from "lucide-react";
-import { saveMessage } from "../action";
+import { supabase } from "../lib/supabase";
 
 const initialStickers = [
   { id: 1, src: "/Sticker1.webp", caught: false, position: "top-[10%] left-[10%]", animation: "animate-float-1" },
@@ -43,12 +43,14 @@ export default function StickerAlbum() {
     if (!comment.trim() || isSubmitting) return;
 
     setIsSubmitting(true);
-    
-    const result = await saveMessage(comment);
-    
+
+    const { error } = await supabase
+      .from('comentarios')
+      .insert([{ contenido: comment }]);
+
     setIsSubmitting(false);
 
-    if (result.success) {
+    if (!error) {
       setStage('success');
     } else {
       alert("Hubo un error al guardar el mensaje. Inténtalo de nuevo.");
