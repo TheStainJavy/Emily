@@ -15,12 +15,12 @@ export async function saveMessage(message: string) {
       throw new Error(dbError.message);
     }
 
-    if (process.env.RESEND_API_KEY && process.env.RESEND_FROM_EMAIL) {
+    if (process.env.RESEND_API_KEY) {
       try {
         const resend = new Resend(process.env.RESEND_API_KEY);
         const { error: emailError } = await resend.emails.send({
-          from: `Emily Web <${process.env.RESEND_FROM_EMAIL}>`,
-          to: ["javieralessport210@gmail.com"],
+          from: "onboarding@resend.dev",
+          to: ["alessinfo219@gmail.com"],
           subject: "✨ Nuevo mensaje desde la web",
           text: message,
         });
