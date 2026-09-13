@@ -1,18 +1,24 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
-
 export async function saveMessage(message: string) {
   try {
-    const fileName = `mensaje_emily_${Date.now()}.txt`;
-    const filePath = path.join(process.cwd(), fileName);
-    
-    const content = `=== Mensaje de Emily ===\nFecha: ${new Date().toLocaleString('es-SV')}\n\n${message}\n`;
-    
-    await fs.writeFile(filePath, content, 'utf-8');
-    return { success: true, fileName };
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: "0b45e154-5583-4d98-aed1-cf7c8f989aed", 
+        subject: "✨ Nuevo mensaje de Emily desde la web",
+        message: message,
+      }),
+    });
+
+    if (!response.ok) throw new Error("Fallo al enviar a la API");
+
+    return { success: true };
   } catch (error) {
-    return { success: false, error: "Error al guardar el archivo" };
+    return { success: false, error: "Error al procesar el mensaje" };
   }
 }
