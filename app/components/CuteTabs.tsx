@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Sparkles, ArrowRight } from "lucide-react";
 import FlowerTransition from "./FlowerTransition";
 import InteractiveBouquet from "./InteractiveBouquet";
@@ -8,9 +9,14 @@ import StickerAlbum from "./StickerAlbum";
 
 type Stage = 'start' | 'letter' | 'bouquet' | 'album';
 
-export default function CuteTabs() {
+export default function CuteTabs({ onStartTour }: { onStartTour?: () => void }) {
   const [stage, setStage] = useState<Stage>('start');
   const [transitionState, setTransitionState] = useState<'idle' | 'in' | 'out'>('idle');
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const advanceStage = (nextStage: Stage) => {
     if (transitionState !== 'idle') return;
@@ -18,6 +24,9 @@ export default function CuteTabs() {
     setTransitionState('in');
 
     setTimeout(() => {
+      if (stage === 'start' && onStartTour) {
+        onStartTour();
+      }
       setStage(nextStage);
       setTransitionState('out');
 
@@ -29,12 +38,15 @@ export default function CuteTabs() {
 
   return (
     <>
-      <FlowerTransition 
-        isActive={transitionState !== 'idle'} 
-        isExiting={transitionState === 'out'} 
-      />
+      {isMounted && typeof document !== 'undefined' && createPortal(
+        <FlowerTransition 
+          isActive={transitionState !== 'idle'} 
+          isExiting={transitionState === 'out'} 
+        />,
+        document.body
+      )}
 
-      <div className="w-full max-w-4xl mx-auto z-10 relative mt-12 min-h-[300px] flex items-center justify-center">
+      <div className="w-full max-w-4xl mx-auto z-10 relative min-h-[300px] flex items-start justify-center pt-2 animate-fade-in-up">
         
         {stage === 'start' && (
           <button
