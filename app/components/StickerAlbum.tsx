@@ -148,7 +148,7 @@ export default function StickerAlbum() {
               ))}
               
               <div className="space-y-6 text-gray-800 text-lg md:text-xl font-medium font-serif leading-relaxed relative z-20">
-                <p>Con todo esto espero que te haya sacado una que otra sonrisa ha sido divertido de hacer esto y para terminar solo quiero terminar diciendo esto:</p>
+                <p>espero que te haya sacado alguna que otra sonrisa ha sido divertido de hacer esto y es mas que todo para decirte esto:</p>
                 <p>Has sido la persona que he conocido a lo largo del tiempo que ha sido la única que me hace sentir que realmente puedo ser yo mismo estando junto a ti.</p>
                 <p>Eso te hace única y especial, te mereces todo lo lindo y bonito de esta vida y me gusta formar parte de tu proceso aunque sea en pequeña parte soy feliz.</p>
                 <p>Aprecio todos mis recuerdos que tengo contigo y todo lo que siento por ti es lo que representan las flores amarillas este dia de mi para ti.</p>
